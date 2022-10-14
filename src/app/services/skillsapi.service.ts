@@ -17,4 +17,8 @@ export class SkillsapiService {
     );
     return res;
   }
+
+  public deleteSkill(jobSkillsId: any): void {
+    console.log('Deleting from api...', jobSkillsId);
+  }
 }

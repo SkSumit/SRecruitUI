@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../material/material.module';
 import { SkillsapiService } from '../services/skillsapi.service';
 
 @Component({
@@ -9,7 +8,12 @@ import { SkillsapiService } from '../services/skillsapi.service';
 })
 export class SkillsComponent implements OnInit {
   skills: any = [];
-
+  deleteSkill = ({ jobSkillsId, jobSkillsTitle }: any) => {
+    if (confirm(`Do you want to delete ${jobSkillsTitle} ?`)) {
+      this.skillapiService.deleteSkill(jobSkillsId);
+    }
+  };
+  public href: string = '';
   constructor(private skillapiService: SkillsapiService) {}
 
   ngOnInit(): void {
