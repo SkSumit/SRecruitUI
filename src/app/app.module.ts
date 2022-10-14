@@ -4,15 +4,25 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EditCompanyComponent } from './components/edit-company/edit-company.component';
+import { FormsModule } from '@angular/forms';
+import { EditCandidateComponent } from './components/edit-candidate/edit-candidate.component';
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditCompanyComponent,
+    EditCandidateComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

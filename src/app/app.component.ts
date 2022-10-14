@@ -13,16 +13,47 @@ export class AppComponent {
   title = 'SRecruit.UI';
   companies: Company[] = [];
   candidates: Candidate[] = [];
+  companyToEdit?:Company;
+  candidateToEdit?:Candidate;
 
-  constructor(private companyService:CompanyService,private candidateService:CandidateService){}
+  constructor(
+    private companyService:CompanyService,
+    private candidateService:CandidateService
+    ){}
 
   ngOnInit():void{
-    this.companyService
-      .getCompany()
-      .subscribe((result:Company[])=>(this.companies = result))
     this.candidateService
       .getCandidate()
       .subscribe((result:Candidate[])=>(this.candidates = result))
+    this.companyService
+      .getCompany()
+      .subscribe((result:Company[])=>(this.companies = result))
+    
+      
   }
   
+  //For Company
+  updateCompanyList(companies:Company[]){
+    this.companies = companies;
+  }
+
+  initNewCompany(){
+    this.companyToEdit = new Company();
+  }
+
+  editCompany(company:Company){
+    this.companyToEdit = company;
+  }
+
+  //For Candidate
+  updateCandidateList(candidates:Candidate[]){
+    this.candidates = candidates;
+  }
+  initNewCandidate(){
+    this.candidateToEdit = new Candidate();
+  }
+  editCandidate(candidate:Candidate){
+    this.candidateToEdit = candidate
+  }
+
 }
