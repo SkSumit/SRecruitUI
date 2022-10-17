@@ -32,7 +32,7 @@
         Year Of Experience:
         <input [(ngModel)] = "candidate.yearOfExperience" placeholder="Candidate Year Of Experience"/>
     </div>
-    <button (click) = "updateCandidate(candidate)" *ngIf="candidate.candidateId">Save</button>
+    <button (click)= "updateCandidate(candidate)" *ngIf="candidate.candidateId">Save</button>
     <button (click) = "deleteCandidate(candidate)" *ngIf="candidate.candidateId">Delete</button>
     <button (click) = "createCandidate(candidate)" *ngIf="!candidate.candidateId">Create</button>
 </div>
