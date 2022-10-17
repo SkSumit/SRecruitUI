@@ -1,0 +1,38 @@
+<div *ngIf = "candidate">
+    <h2>{{candidate.fullName}}</h2>
+    <!-- <div>
+        Id:
+        <input [(ngModel)] = "company.companyId" placeholder="ID"/>
+    </div> -->
+    <div>
+        Name:
+        <input [(ngModel)] = "candidate.fullName" placeholder="Candidate Name"/>
+    </div>
+   <div>
+        Phone Number:
+        <input [(ngModel)] = "candidate.phoneNumber" placeholder="Candidate Phone Number"/>
+   </div>
+    <div>
+        Email Id:
+        <input [(ngModel)] = "candidate.emailId" placeholder="Candidate Email Id"/>
+    </div>
+    <div>
+        Address:
+        <input [(ngModel)] = "candidate.address" placeholder="Candidate Address"/>
+    </div>
+    <div>
+        Job Skill Title:
+        <input [(ngModel)] = "candidate.jobSkillTitle" placeholder="Candidate Job Skill Title"/>
+    </div>
+    <div>
+        Preferred Location:
+        <input [(ngModel)] = "candidate.preferredLocation" placeholder="Candidate Preferred Location"/>
+    </div>
+    <div>
+        Year Of Experience:
+        <input [(ngModel)] = "candidate.yearOfExperience" placeholder="Candidate Year Of Experience"/>
+    </div>
+    <button (click) = "updateCandidate(candidate)" *ngIf="candidate.candidateId">Save</button>
+    <button (click) = "deleteCandidate(candidate)" *ngIf="candidate.candidateId">Delete</button>
+    <button (click) = "createCandidate(candidate)" *ngIf="!candidate.candidateId">Create</button>
+</div>
