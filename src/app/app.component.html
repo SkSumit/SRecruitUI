@@ -8,11 +8,11 @@
     </div>
   </div>
 </div>
-<button (click)="initNewCompany()">Create New Company</button>
-<button (click)="initNewCandidate()">Create New Candidate</button>
-<table>
-  <thead>
-    <!-- <th>CompanyID</th>
+<!-- <button (click)="initNewCompany()">Create New Company</button>
+<button (click)="initNewCandidate()">Create New Candidate</button> -->
+<!-- <table>
+  <thead> -->
+<!-- <th>CompanyID</th>
     <th>CompanyName</th>
     <th>Location</th>
      <th>CandidateID</th>
@@ -23,9 +23,9 @@
     <th>CandidatePreferredLocation</th>
     <th>CandidateJobSkillTitle</th>
     <th>CandidateYOE</th>  -->
-  </thead>
-  <tbody>
-    <tr *ngFor="let company of companies">
+<!-- </thead>
+  <tbody> -->
+<!-- <tr *ngFor="let company of companies">
       <td>{{ company.companyId }}</td>
       <td>{{ company.companyName }}</td>
       <td>{{ company.location }}</td>
@@ -41,9 +41,9 @@
       <td>{{ candidate.jobSkillTitle }}</td>
       <td>{{ candidate.yearOfExperience }}</td>
       <td><button (click)="editCandidate(candidate)">Edit</button></td>
-      <!-- (companyUpdated) = "updateCompanyList($event)"-->
+      (companyUpdated) = "updateCompanyList($event)"
     </tr>
   </tbody>
 </table>
 <app-edit-company [company]="companyToEdit"></app-edit-company>
-<app-edit-candidate [candidate]="candidateToEdit"></app-edit-candidate>
+<app-edit-candidate [candidate]="candidateToEdit"></app-edit-candidate> -->
