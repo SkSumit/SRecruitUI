@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutComponent } from './layout/layout.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { LayoutComponent } from './layout/layout.component';
   ],
   imports: [
     BrowserModule,
-
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

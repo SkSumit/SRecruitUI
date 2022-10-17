@@ -1,1 +1,2 @@
-export type Skills = { jobSkillsId: number; jobSkillsTitle: string }[];
+export type Skill = { jobSkillsId: number; jobSkillsTitle: string };
+export type Skills = Skill[];

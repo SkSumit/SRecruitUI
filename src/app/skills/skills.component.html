@@ -21,7 +21,18 @@
   </tbody>
 </table>
 <div></div>
-<form class="is-flex mx-3">
-  <input class="input" type="text" placeholder="Text input" />
+
+<form
+  #addSkillForm="ngForm"
+  (ngSubmit)="addSkill(addSkillForm)"
+  class="is-flex mx-3"
+>
+  <input
+    class="input"
+    type="text"
+    placeholder="Text input"
+    name="skillinput"
+    ngModel
+  />
   <button type="submit" class="button is-success ml-3">Add Skill</button>
 </form>
