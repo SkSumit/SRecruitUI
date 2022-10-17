@@ -1,0 +1,14 @@
+<div *ngIf = "company">
+    <h2>{{company.companyName}}</h2>
+    <div>
+        Name:
+        <input [(ngModel)] = "company.companyName" placeholder="Company Name"/>
+    </div>
+    <div>
+        Location:
+        <input [(ngModel)] = "company.location" placeholder="Company Location"/>
+    </div>
+    <button (click) = "updateCompany(company)" *ngIf="company.companyId">Save</button>
+    <button (click) = "deleteCompany(company)" *ngIf="company.companyId">Delete</button>
+    <button (click) = "createCompany(company)" *ngIf="!company.companyId">Create</button>
+</div>

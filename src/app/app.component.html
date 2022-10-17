@@ -3,9 +3,47 @@
     <div class="column is-2 has-background-grey-darker">
       <app-sidenav class="height-100"></app-sidenav>
     </div>
-    <div class="column mx-2 my-2 is-flex box">
-      <p>Welcome to {{ currentRoute }}</p>
+    <div class="column mx-4 my-4 is-flex box">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
+<!-- <button (click)="initNewCompany()">Create New Company</button>
+<button (click)="initNewCandidate()">Create New Candidate</button> -->
+<!-- <table>
+  <thead> -->
+<!-- <th>CompanyID</th>
+    <th>CompanyName</th>
+    <th>Location</th>
+     <th>CandidateID</th>
+    <th>CandidateName</th>
+    <th>CandidatePhoneNumber</th>
+    <th>CandidateEmailId</th>
+    <th>CandidateAddress</th>
+    <th>CandidatePreferredLocation</th>
+    <th>CandidateJobSkillTitle</th>
+    <th>CandidateYOE</th>  -->
+<!-- </thead>
+  <tbody> -->
+<!-- <tr *ngFor="let company of companies">
+      <td>{{ company.companyId }}</td>
+      <td>{{ company.companyName }}</td>
+      <td>{{ company.location }}</td>
+      <td><button (click)="editCompany(company)">Edit</button></td>
+    </tr>
+    <tr *ngFor="let candidate of candidates">
+      <td>{{ candidate.candidateId }}</td>
+      <td>{{ candidate.fullName }}</td>
+      <td>{{ candidate.phoneNumber }}</td>
+      <td>{{ candidate.emailId }}</td>
+      <td>{{ candidate.address }}</td>
+      <td>{{ candidate.preferredLocation }}</td>
+      <td>{{ candidate.jobSkillTitle }}</td>
+      <td>{{ candidate.yearOfExperience }}</td>
+      <td><button (click)="editCandidate(candidate)">Edit</button></td>
+      (companyUpdated) = "updateCompanyList($event)"
+    </tr>
+  </tbody>
+</table>
+<app-edit-company [company]="companyToEdit"></app-edit-company>
+<app-edit-candidate [candidate]="candidateToEdit"></app-edit-candidate> -->
