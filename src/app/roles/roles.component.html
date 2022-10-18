@@ -1,42 +1,55 @@
 <div class="skills-container">
   <p class="has-text-left subtitle is-3">Roles</p>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Skill</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let role of roles">
-        <td>{{ role.jobRoleId }}</td>
-        <td>{{ role.jobRoleTitle }}</td>
-        <td>{{ role.jobRoleSkill }}</td>
-        <td><button class="button is-white">✏️</button></td>
-        <td>
-          <button class="delete is-danger" (click)="deleteRole(role)"></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div></div>
-
-  <form
-    #addRoleForm="ngForm"
-    (ngSubmit)="addRole(addRoleForm)"
-    class="is-flex mx-3"
-  >
-    <input
-      class="input"
-      type="text"
-      placeholder="Text input"
-      name="roleinput"
-      ngModel
-    />
-    <button type="submit" class="button is-success ml-3">Add Role</button>
-  </form>
+  <div class="columns">
+    <div class="column is-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Skill</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of roles">
+            <td>{{ role.jobRoleId }}</td>
+            <td>{{ role.jobRoleTitle }}</td>
+            <td>{{ role.jobRoleSkill }}</td>
+            <td><button class="button is-white">✏️</button></td>
+            <td>
+              <button
+                class="delete is-danger"
+                (click)="deleteRole(role)"
+              ></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="column is-4">
+      <form
+        #addRoleForm="ngForm"
+        (ngSubmit)="addRole(addRoleForm)"
+        class="is-flex mx-3 addRoleForm"
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="Text input"
+          name="roleinput"
+          ngModel
+        />
+        <div class="select">
+          <select name="roleselect" ngModel>
+            <option [value]="skill.jobSkillsId" *ngFor="let skill of skills">
+              {{ skill.jobSkillsTitle }}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="button is-success ml-3">Add Role</button>
+      </form>
+    </div>
+  </div>
 </div>

@@ -12,8 +12,6 @@ export class CandidateService {
   constructor(private http: HttpClient) {}
 
   public getCandidate(): Observable<Candidate[]> {
-    console.log('Hello');
-    // console.log(this.http.get<Company[]>('${environment.apiURL}/${this.url}'));
     return this.http.get<Candidate[]>(`${environment.apiURL}${this.url}`);
   }
   public updateCandidate(candidate: Candidate): Observable<Candidate[]> {
