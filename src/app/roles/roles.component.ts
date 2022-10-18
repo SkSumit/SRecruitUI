@@ -11,19 +11,18 @@ import { SkillsapiService } from '../services/skillsapi.service';
 export class RolesComponent implements OnInit {
   roles: any = [];
   skills: Skills = [];
+  editingRole: Role | null = null;
 
   constructor(
     private rolesapiService: RolesapiService,
     private skillapiService: SkillsapiService
   ) {}
 
-  deleteRole = ({ jobRoleId, jobRoleTitle }: any) => {
+  deleteRole = ({ id, jobRoleTitle }: any) => {
     if (confirm(`Do you want to delete ${jobRoleTitle} ?`)) {
-      this.rolesapiService.deleteRole(jobRoleId).subscribe((r: any) => {
+      this.rolesapiService.deleteRole(id).subscribe((r: any) => {
         if (r === 200) {
-          this.roles = this.roles.filter(
-            (role: Role) => role.jobRoleId !== jobRoleId
-          );
+          this.roles = this.roles.filter((role: Role) => role.id !== id);
         }
       });
     }
@@ -31,24 +30,38 @@ export class RolesComponent implements OnInit {
 
   addRole = (form: any) => {
     const { value } = form;
-    const { roleinput, roleselect } = value;
-    // const selectedSkill =
-    // this.skills.find((skills) => skills.jobSkillsId === +roleselect)
-
-    console.log(roleinput, +roleselect);
+    const { roleidinput, roleselect, roletitleinput } = value;
 
     const obj = {
-      jobRoleId: 1,
-      jobRoleTitle: roleinput,
+      id: this.editingRole?.id,
+      jobRoleId: roleidinput ? roleidinput : this.editingRole?.jobRoleId,
+      jobRoleTitle: roletitleinput
+        ? roletitleinput
+        : this.editingRole?.jobRoleTitle,
       jobRoleSkill: +roleselect,
     };
-    this.rolesapiService.addRole(obj).subscribe((r: any) => {
-      this.roles = [...this.roles, r];
-    });
+    if (this.editingRole) {
+      this.rolesapiService.updateRole(obj).subscribe((r) => {
+        const f = this.roles.findIndex((role: Role) => role.id === r.id);
+
+        this.roles[f].jobRoleId = obj.jobRoleId;
+        this.roles[f].jobRoleTitle = obj.jobRoleTitle;
+        this.roles[f].jobRoleSkill = obj.jobRoleSkill;
+
+        this.roles = this.roles;
+      });
+    } else {
+      this.rolesapiService.addRole(obj).subscribe((r: any) => {
+        this.roles = [...this.roles, r];
+      });
+    }
     form.resetForm();
+    this.editingRole = null;
   };
 
-  // updateSkill = ()
+  editRole = (role: Role) => {
+    this.editingRole = role;
+  };
 
   ngOnInit(): void {
     this.rolesapiService.getRoles().subscribe((res: any) => (this.roles = res));

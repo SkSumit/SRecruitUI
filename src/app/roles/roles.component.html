@@ -5,7 +5,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Id</th>
+            <th>Role Id</th>
             <th>Title</th>
             <th>Skill</th>
             <th>Edit</th>
@@ -17,7 +17,11 @@
             <td>{{ role.jobRoleId }}</td>
             <td>{{ role.jobRoleTitle }}</td>
             <td>{{ role.jobRoleSkill }}</td>
-            <td><button class="button is-white">✏️</button></td>
+            <td>
+              <button (click)="editRole(role)" class="button is-white">
+                ✏️
+              </button>
+            </td>
             <td>
               <button
                 class="delete is-danger"
@@ -36,11 +40,21 @@
       >
         <input
           class="input"
-          type="text"
-          placeholder="Text input"
-          name="roleinput"
+          type="number"
+          placeholder="ID input"
+          name="roleidinput"
           ngModel
+          [value]="editingRole?.jobRoleId"
         />
+        <input
+          class="input"
+          type="text"
+          placeholder="Title input"
+          name="roletitleinput"
+          ngModel
+          [value]="editingRole?.jobRoleTitle"
+        />
+
         <div class="select">
           <select name="roleselect" ngModel>
             <option [value]="skill.jobSkillsId" *ngFor="let skill of skills">
