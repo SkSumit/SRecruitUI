@@ -12,8 +12,8 @@ import { CompanyService } from './services/company.service';
 export class AppComponent {
   title = 'SRecruit.UI';
   companies: Company[] = [];
-  candidates: Candidate[] = [];
   companyToEdit?:Company;
+  candidates: Candidate[] = []; 
   candidateToEdit?:Candidate;
 
   constructor(

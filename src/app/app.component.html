@@ -23,9 +23,25 @@
     <th>CandidatePreferredLocation</th>
     <th>CandidateJobSkillTitle</th>
     <th>CandidateYOE</th>  -->
-<!-- </thead>
-  <tbody> -->
-<!-- <tr *ngFor="let company of companies">
+  <!-- </thead>
+  <tbody>
+    <tr *ngFor = "let company of companies">
+      <td>{{company.companyId}}</td>
+      <td>{{company.companyName}}</td>
+      <td>{{company.location}}</td>
+      <td><button (click) = "editCompany(company)">Edit</button></td>
+    </tr> 
+    <tr *ngFor = "let candidate of candidates">
+      <td>{{candidate.candidateId}}</td>
+      <td>{{candidate.fullName}}</td>
+      <td>{{candidate.phoneNumber}}</td>
+      <td>{{candidate.emailId}}</td>
+      <td>{{candidate.address}}</td>
+      <td>{{candidate.preferredLocation}}</td>
+      <td>{{candidate.jobSkillTitle}}</td>
+      <td>{{candidate.yearOfExperience}}</td>
+      <td><button (click) = "editCandidate(candidate)">Edit</button></td>
+    <tr *ngFor="let company of companies">
       <td>{{ company.companyId }}</td>
       <td>{{ company.companyName }}</td>
       <td>{{ company.location }}</td>
@@ -40,9 +56,9 @@
       <td>{{ candidate.preferredLocation }}</td>
       <td>{{ candidate.jobSkillTitle }}</td>
       <td>{{ candidate.yearOfExperience }}</td>
-      <td><button (click)="editCandidate(candidate)">Edit</button></td>
-      (companyUpdated) = "updateCompanyList($event)"
-    </tr>
+      <td><button (click)="editCandidate(candidate)">Edit</button></td> -->
+      <!-- (companyUpdated) = "updateCompanyList($event)"-->
+    <!-- </tr>
   </tbody>
 </table>
 <app-edit-company [company]="companyToEdit"></app-edit-company>
