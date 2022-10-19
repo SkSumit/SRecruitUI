@@ -30,8 +30,8 @@ export class SkillsapiService {
   }
 
   public updateSkill(skill: Skill): Observable<Skill> {
-    const res = this.http.post<Skill>(
-      `${environment.apiURL}${this.urlEndpoint}`,
+    const res = this.http.put<Skill>(
+      `${environment.apiURL}${this.urlEndpoint}/${skill.jobSkillsId}`,
       skill
     );
 

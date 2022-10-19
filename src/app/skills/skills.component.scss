@@ -1,3 +1,13 @@
 .skills-container {
-  width: 100%;
+  width: -webkit-fill-available;
+  table {
+    width: -webkit-fill-available;
+  }
+}
+
+.addSkillForm {
+  flex-direction: row;
+  input {
+    width: 300px;
+  }
 }

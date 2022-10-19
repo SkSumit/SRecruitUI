@@ -15,6 +15,7 @@ export class RolesapiService {
     const res = this.http.get<Roles>(
       `${environment.apiURL}${this.urlEndpoint}`
     );
+
     return res;
   }
 
@@ -22,6 +23,7 @@ export class RolesapiService {
     const res = this.http.post<Role>(
       `${environment.apiURL}${this.urlEndpoint}`,
       {
+        jobRoleId: role.jobRoleId,
         jobRoleTitle: role.jobRoleTitle,
         jobRoleSkill: role.jobRoleSkill,
       }
@@ -31,8 +33,8 @@ export class RolesapiService {
   }
 
   public updateRole(role: Role): Observable<Role> {
-    const res = this.http.post<Role>(
-      `${environment.apiURL}${this.urlEndpoint}`,
+    const res = this.http.put<Role>(
+      `${environment.apiURL}${this.urlEndpoint}/${role.id}`,
       role
     );
 

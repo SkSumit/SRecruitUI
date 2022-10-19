@@ -12,7 +12,6 @@ export class CompanyService {
   constructor(private http: HttpClient) {}
 
   public getCompany(): Observable<Company[]> {
-    //console.log(this.http.get<Company[]>('${environment.apiURL}/${this.url}'));
     return this.http.get<Company[]>(`${environment.apiURL}${this.url}`);
   }
   public updateCompany(company: Company): Observable<Company[]> {

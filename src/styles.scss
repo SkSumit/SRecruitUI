@@ -18,3 +18,7 @@ body {
 .is-100 {
   width: -webkit-fill-available;
 }
+
+.overflow-y-scroll {
+  overflow-y: auto !important;
+}
