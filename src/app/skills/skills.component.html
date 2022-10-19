@@ -1,0 +1,43 @@
+<div class="skills-container">
+  <p class="has-text-left subtitle is-3">Skills</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let skill of skills">
+        <td>{{ skill.jobSkillsId }}</td>
+        <td>{{ skill.jobSkillsTitle }}</td>
+        <td><button class="button is-white">✏️</button></td>
+        <td>
+          <button
+            class="delete is-danger"
+            (click)="deleteSkill(skill)"
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div></div>
+
+  <form
+    #addSkillForm="ngForm"
+    (ngSubmit)="addSkill(addSkillForm)"
+    class="is-flex mx-3"
+  >
+    <input
+      class="input"
+      type="text"
+      placeholder="Text input"
+      name="skillinput"
+      ngModel
+    />
+    <button type="submit" class="button is-success ml-3">Add Skill</button>
+  </form>
+</div>
