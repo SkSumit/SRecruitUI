@@ -32,7 +32,6 @@ export class SkillsComponent implements OnInit {
 
   // updateSkill = ()
 
-  public href: string = '';
   constructor(private skillapiService: SkillsapiService) {}
 
   ngOnInit(): void {
