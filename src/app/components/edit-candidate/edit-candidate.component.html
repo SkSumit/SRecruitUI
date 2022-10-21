@@ -1,42 +1,3 @@
-<!-- <div *ngIf = "candidate">
-    <h2>{{candidate.fullName}}</h2>
-     <div>
-        Id:
-        <input [(ngModel)] = "company.companyId" placeholder="ID"/>
-    </div> -->
-    <!-- <div>
-        Name:
-        <input [(ngModel)] = "candidate.fullName" placeholder="Candidate Name"/>
-    </div>
-   <div>
-        Phone Number:
-        <input [(ngModel)] = "candidate.phoneNumber" placeholder="Candidate Phone Number"/>
-   </div>
-    <div>
-        Email Id:
-        <input [(ngModel)] = "candidate.emailId" placeholder="Candidate Email Id"/>
-    </div>
-    <div>
-        Address:
-        <input [(ngModel)] = "candidate.address" placeholder="Candidate Address"/>
-    </div>
-    <div>
-        Job Skill Title:
-        <input [(ngModel)] = "candidate.jobSkillTitle" placeholder="Candidate Job Skill Title"/>
-    </div>
-    <div>
-        Preferred Location:
-        <input [(ngModel)] = "candidate.preferredLocation" placeholder="Candidate Preferred Location"/>
-    </div>
-    <div>
-        Year Of Experience:
-        <input [(ngModel)] = "candidate.yearOfExperience" placeholder="Candidate Year Of Experience"/>
-    </div>
-    <button (click)= "updateCandidate(candidate)" *ngIf="candidate.candidateId">Save</button>
-    <button (click) = "deleteCandidate(candidate)" *ngIf="candidate.candidateId">Delete</button>
-    <button (click) = "createCandidate(candidate)" *ngIf="!candidate.candidateId">Create</button>
-</div> --> 
-
 <div class="candidate-container">
     <p class="has-text-left subtitle is-3">Candidates</p>
   
@@ -68,22 +29,15 @@
           <td>
             <button (click)= "editCandidate(c)" >Edit</button></td>
            <td>
-            <!-- <button
-              class="delete is-danger"
-              (click)="deleteCandidate(candidate)"
-            >Delete</button> -->
             <button class="delete is-danger" (click) = "deleteCandidate(c)" >Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <!-- <div>
-      <button (click)="initNewCandidate()">Create New Candidate</button>
-    </div> -->
   
     <form
       #addcandidateForm="ngForm"
-      (ngSubmit)="createCandidate(addcandidateForm)"
+      (ngSubmit)="addCandidate(addcandidateForm)"
       class="is-flex mx-3"
     >
       <input
@@ -91,12 +45,14 @@
       type="text"
       placeholder="Name"
       name="fullName" [(ngModel)]="candidate.fullName"
+      [value] = "candidateToEdit?.fullName"
       />
       <input
       class="input"
       type="text"
       placeholder="Phone no."
-      name="phoneNumber" [(ngModel)]="candidate.phoneNumber" 
+      name="phoneNumber" [(ngModel)]="candidate.phoneNumber"
+      [value] = "candidateToEdit?.phoneNumber" 
       />
       <input
       class="input"
@@ -104,32 +60,34 @@
       placeholder="Email Id"
       name="emailId"       
        [(ngModel)]="candidate.emailId"
-       />
+       [value] = "candidateToEdit?.emailId"/>
         <input
         class="input"
         type="text"
         placeholder="Address"
         name="address" [(ngModel)]="candidate.address"
+        [value] = "candidateToEdit?.address"
         />
-        <input
-        class="input"
-        type="text"
-        placeholder="Job Skill Title input"
-        name="jobSkillTitle" [(ngModel)]="candidate.jobSkillTitle"
-        />
+       
         <input
         class="input"
         type="text"
         placeholder="Location"
         name="preferredLocation" [(ngModel)]="candidate.preferredLocation"
-        />
+        [value] = "candidateToEdit?.preferredLocation"/>
+        <input
+        class="input"
+        type="text"
+        placeholder="Job Skill Title input"
+        name="jobSkillTitle" [(ngModel)]="candidate.jobSkillTitle"
+        [value] = "candidateToEdit?.jobSkillTitle"/>
         
         <input
         class="input"
         type="number"
         placeholder="Experience"
         name="yearOfExperience" [(ngModel)]="candidate.yearOfExperience"
-        />
+        [value] = "candidateToEdit?.yearOfExperience"/>
      <button type="submit" class="button is-success ml-3">Add Candidate</button>
     </form>
   </div>
