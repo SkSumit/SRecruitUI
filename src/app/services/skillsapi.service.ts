@@ -8,7 +8,7 @@ import { Skills, Skill } from '../types';
   providedIn: 'root',
 })
 export class SkillsapiService {
-  private urlEndpoint = 'api/jobskills';
+  private urlEndpoint = '/jobskills';
   constructor(private http: HttpClient) {}
 
   public getSkills(): Observable<Skills> {

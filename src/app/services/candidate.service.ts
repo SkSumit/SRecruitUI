@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class CandidateService {
-  private url = 'api/Candidate';
+  private url = '/Candidate';
   constructor(private http: HttpClient) {}
 
   public getCandidate(): Observable<Candidate[]> {
@@ -26,7 +26,7 @@ export class CandidateService {
       candidate
     );
   }
-  public deleteCandidate(c:Candidate): Observable<Candidate[]> {
+  public deleteCandidate(c: Candidate): Observable<Candidate[]> {
     return this.http.delete<Candidate[]>(
       `${environment.apiURL}${this.url}/${c.candidateId}`
     );

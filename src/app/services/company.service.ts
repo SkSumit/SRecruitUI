@@ -8,7 +8,7 @@ import { Company } from '../models/company';
   providedIn: 'root',
 })
 export class CompanyService {
-  private url = 'api/Company';
+  private url = '/Company';
   constructor(private http: HttpClient) {}
 
   public getCompany(): Observable<Company[]> {

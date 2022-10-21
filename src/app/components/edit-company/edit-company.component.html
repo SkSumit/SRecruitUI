@@ -1,72 +1,54 @@
-<!-- <<div *ngIf = "company">
-    <h2>{{company.companyName}}</h2>
-    <div>
-        Name:
-        <input [(ngModel)] = "company.companyName" placeholder="Company Name"/>
-    </div>
-    <div>
-        Location:
-        <input [(ngModel)] = "company.location" placeholder="Company Location"/>
-    </div>
-    <button (click) = "updateCompany(company)" *ngIf="company.companyId">Save</button>
-    <button (click) = "deleteCompany(company)" *ngIf="company.companyId">Delete</button>
-    <button (click) = "createCompany(company)" *ngIf="!company.companyId">Create</button>
-</div>
- -->
-
-
 <div class="company_container">
-    <p class = "has-text-left subtitle is-3">Company</p>
+  <p class="has-text-left subtitle is-3">Company</p>
 
-    <table class = "table">
-        <thead>
-            <tr>
-                <th>Company Id</th>
-                <th>Company Name</th>
-                <th>Company Location</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let c of company">
-                <td>{{c.companyId}}</td>
-                <td>{{c.companyName}}</td>
-                <td>{{c.location}}</td>
-                <td>
-                    <button (click) = "editCompany(c)">Edit</button>
-                </td>
-                <td>
-                    <button (click) = "deleteCompany(c)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Company Id</th>
+        <th>Company Name</th>
+        <th>Company Location</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of company">
+        <td>{{ c.companyId }}</td>
+        <td>{{ c.companyName }}</td>
+        <td>{{ c.location }}</td>
+        <td>
+          <button (click)="editCompany(c)" class="button is-white">✏️</button>
+        </td>
+        <td>
+          <button class="delete is-danger" (click)="deleteCompany(c)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    </table>
-    <!-- <div>
-        <button (click)="initNewCompany()">Create New Company</button>
-      </div> -->
-
-      <form
-      #addcompanyForm="ngForm"
-      (ngSubmit)="createCompany(addcompanyForm)"
-      class="is-flex mx-3"
-      >
-      <input
-      class= "input"
+  <form
+    #addcompanyForm="ngForm"
+    (ngSubmit)="createCompany(addcompanyForm)"
+    class="is-flex mx-3"
+  >
+    <input
+      class="input"
       type="text"
       placeholder="Name"
-      name="companyName" [(ngModel)] = "company.companyName"
-      [value] = "companyToEdit?.companyName"
-      />
-      <input
+      name="companyName"
+      [(ngModel)]="company.companyName"
+      [value]="companyToEdit?.companyName"
+    />
+    <input
       class="input"
       type="text"
       placeholder="Location"
-      name="location" [(ngModel)] = "company.location"
-      [value] = "companyToEdit?.location"
-      />
-      <button type = "submit" class="button is-success ml-3">Add Company</button>
-      </form>
-
+      name="location"
+      [(ngModel)]="company.location"
+      [value]="companyToEdit?.location"
+    />
+    <button type="submit" class="button is-success ml-3">Add Company</button>
+  </form>
 </div>
