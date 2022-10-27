@@ -1,4 +1,98 @@
 <div class="candidate-container">
+<<<<<<< HEAD
+    <p class="has-text-left subtitle is-3">Candidates</p>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>FullName</th>
+          <th>PhoneNumber</th>
+          <th>EmailId</th>
+          <th>Address</th>
+          <th>PreferredLocation</th>
+          <th>JobSkillTitle</th>
+          <th>YearOfExperience</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of candidate">
+          <td>{{ c.candidateId }}</td>
+          <td>{{ c.fullName }}</td>
+          <td>{{ c.phoneNumber }}</td>
+          <td>{{ c.emailId }}</td>
+          <td>{{ c.address }}</td>
+          <td>{{ c.preferredLocation }}</td> 
+          <td>{{ c.jobSkillTitle }}</td>        
+          <td>{{ c.yearOfExperience }}</td>
+          <td>
+            <button (click)= "editCandidate(c)" >Edit</button></td>
+           <td>
+            <button class="delete is-danger" (click) = "deleteCandidate(c)" >Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <form
+      #addcandidateForm="ngForm"
+      (ngSubmit)="addCandidate(addcandidateForm)"
+      class="is-flex mx-3"
+    >
+      <input
+      class="input"
+      type="text"
+      placeholder="Name"
+      name="fullName" [(ngModel)]="candidate.fullName"
+      [value] = "candidateToEdit?.fullName"
+      />
+      <input
+      class="input"
+      type="text"
+      placeholder="Phone no."
+      name="phoneNumber" [(ngModel)]="candidate.phoneNumber"
+      [value] = "candidateToEdit?.phoneNumber" 
+      />
+      <input
+      class="input"
+      type="text"
+      placeholder="Email Id"
+      name="emailId"       
+       [(ngModel)]="candidate.emailId"
+       [value] = "candidateToEdit?.emailId"/>
+        <input
+        class="input"
+        type="text"
+        placeholder="Address"
+        name="address" [(ngModel)]="candidate.address"
+        [value] = "candidateToEdit?.address"
+        />
+       
+        <input
+        class="input"
+        type="text"
+        placeholder="Location"
+        name="preferredLocation" [(ngModel)]="candidate.preferredLocation"
+        [value] = "candidateToEdit?.preferredLocation"/>
+        <input
+        class="input"
+        type="text"
+        placeholder="Job Skill Title input"
+        name="jobSkillTitle" [(ngModel)]="candidate.jobSkillTitle"
+        [value] = "candidateToEdit?.jobSkillTitle"/>
+        
+        <input
+        class="input"
+        type="number"
+        placeholder="Experience"
+        name="yearOfExperience" [(ngModel)]="candidate.yearOfExperience"
+        [value] = "candidateToEdit?.yearOfExperience"/>
+     <button type="submit" class="button is-success ml-3">Add Candidate</button>
+    </form>
+  </div>
+=======
   <p class="has-text-left subtitle is-3">Candidates</p>
 
   <table class="table">
@@ -85,6 +179,7 @@
       name="preferredLocation"
       [(ngModel)]="candidate.preferredLocation"
     />
+>>>>>>> 20a5d187f37df7ec30adb0910e31ae678ebd40c5
 
     <input
       class="input"

@@ -2,6 +2,8 @@ import { formatCurrency } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Company } from 'src/app/models/company';
 import { CompanyService } from 'src/app/services/company.service';
+import { SelectedCandidateService } from 'src/app/services/selected-candidate.service';
+
 
 @Component({
   selector: 'app-edit-company',
@@ -9,14 +11,17 @@ import { CompanyService } from 'src/app/services/company.service';
   styleUrls: ['./edit-company.component.css']
 })
 export class EditCompanyComponent implements OnInit {
+
+  selectedCandidate:any = [];
+
   company:any = [];
   companies: Company[] = [];
   companyToEdit?:Company;
-  //@Input() company?: Company;
   @Output() companyUpdated = new EventEmitter<Company[]>();
 
   constructor(
     private companyService:CompanyService,
+    private selectedCandidateService:SelectedCandidateService
     ) { }
 
   ngOnInit(): void {
@@ -25,11 +30,6 @@ export class EditCompanyComponent implements OnInit {
       .subscribe((result:any)=>(this.company = result))
   }
 
-  updateCompany(company:Company){
-    this.companyService
-      .updateCompany(company)
-      .subscribe((companies: Company[]) => this.companyUpdated.emit(companies))
-  }
   deleteCompany(company:Company){
     this.companyService
       .deleteCompany(company)
@@ -45,39 +45,26 @@ export class EditCompanyComponent implements OnInit {
   
   }
 
-  // addSkill = (company:any) => {
-  //   //const { value } = com;
-
-  //   if (this.companyToEdit) {
-  //     // this.companyService
-  //     //   .updateCompany(company)
-  //     //   .subscribe((r) => {
-  //     //     this.company.find(
-  //     //       (company: Company) => skill.jobSkillsId === r.jobSkillsId
-  //     //     ).jobSkillsTitle = r.jobSkillsTitle;
-
-  //     //     this.skills = this.skills;
-  //     //   });
-  //     this.updateCompany(company)
-  //   } else {
-  //     // this.skillapiService.addSkill(value.skillinput).subscribe((r) => {
-  //     //   this.skills = [...this.skills, r];
-  //     // });
-  //     this.createCompany(company);
-  //   }
-  //   company.resetForm();
-  //   this.companyToEdit =  ;
-  // };
-
-  // createCompany = (form:any) => {
-  //   const {value} = form;
-  //   this.companyService
-  //     .createCompany(value.company)
-  //     .subscribe((r)=>{this.company = [...this.company,r];
-  //     });
-  //     form.resetForm();
-  // };
-
+  addCompany = (form:any) => {
+    const { value } = form;
+    if (this.companyToEdit) {
+      this.companyService
+        .updateCompany({
+          companyId:this.companyToEdit.companyId,
+          companyName:value.companyName == undefined ? this.companyToEdit.companyName:value.companyName,
+          location:value.location == undefined?this.companyToEdit.location:value.location
+        })
+        .subscribe((r) => {
+          this.company.find(
+            (company:Company)=>company.companyId===r.companyId
+            );
+            this.company = this.company;
+          });
+     }else {
+      this.createCompany(form);
+    }
+    form.resetForm();
+  };
   updateCompanyList(companies:Company[]){
     this.companies = companies;
   }
@@ -88,5 +75,10 @@ export class EditCompanyComponent implements OnInit {
 
   editCompany(company:Company){
     this.companyToEdit = company;
+  }
+  getSelectedCandidate(companyId:number){
+    this.selectedCandidateService
+      .getSelectedCandidate(companyId)
+      .subscribe((res : any)=>(this.selectedCandidate = res));
   }
 }

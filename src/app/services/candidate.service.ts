@@ -14,9 +14,9 @@ export class CandidateService {
   public getCandidate(): Observable<Candidate[]> {
     return this.http.get<Candidate[]>(`${environment.apiURL}${this.url}`);
   }
-  public updateCandidate(candidate: Candidate): Observable<Candidate[]> {
-    return this.http.put<Candidate[]>(
-      `${environment.apiURL}${this.url}`,
+  public updateCandidate(candidate: Candidate): Observable<Candidate> {
+    return this.http.put<Candidate>(
+      `${environment.apiURL}${this.url}/${candidate.candidateId}`,
       candidate
     );
   }
@@ -30,5 +30,13 @@ export class CandidateService {
     return this.http.delete<Candidate[]>(
       `${environment.apiURL}${this.url}/${c.candidateId}`
     );
+  }
+  public addCandidate(candidateId:Candidate):Observable<Candidate>{
+    return this.http.post<Candidate>(
+      `${environment.apiURL}${this.url}`,
+      {
+        candidateId:candidateId,
+      }
+    )
   }
 }

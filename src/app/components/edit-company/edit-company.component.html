@@ -1,40 +1,43 @@
 <div class="company_container">
   <p class="has-text-left subtitle is-3">Company</p>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Company Id</th>
-        <th>Company Name</th>
-        <th>Company Location</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of company">
-        <td>{{ c.companyId }}</td>
-        <td>{{ c.companyName }}</td>
-        <td>{{ c.location }}</td>
-        <td>
-          <button (click)="editCompany(c)" class="button is-white">✏️</button>
-        </td>
-        <td>
-          <button class="delete is-danger" (click)="deleteCompany(c)">
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Company Id</th>
+                <th>Company Name</th>
+                <th>Company Location</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Selected Candidate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of company">
+                <td>{{c.companyId}}</td>
+                <td>{{c.companyName}}</td>
+                <td>{{c.location}}</td>
+                <td>
+                    <button (click) = "editCompany(c)">Edit</button>
+                </td>
+                <td>
+                    <button (click) = "deleteCompany(c)">Delete</button>
+                </td>
+                <td>
+                    <button (click) = "getSelectedCandidate(c.companyId)">SelectedCandidate</button>
+                </td>
+            </tr>
+        </tbody>
 
-  <form
-    #addcompanyForm="ngForm"
-    (ngSubmit)="createCompany(addcompanyForm)"
-    class="is-flex mx-3"
-  >
-    <input
-      class="input"
+    </table>
+
+      <form
+      #addcompanyForm="ngForm"
+      (ngSubmit)="addCompany(addcompanyForm)"
+      class="is-flex mx-3"
+      >
+      <input
+      class= "input"
       type="text"
       placeholder="Name"
       name="companyName"
@@ -51,4 +54,31 @@
     />
     <button type="submit" class="button is-success ml-3">Add Company</button>
   </form>
+</div>
+
+<p class = "has-text-left subtitle is-3">Shortlisted Candidates</p>
+<div>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Location</th>
+                <th>Role Title</th>
+                <th>Skill Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let s of selectedCandidate">
+                <td>{{s.shortListId}}</td>
+                <td>{{s.shortListName}}</td>
+                <td>{{s.shortListNumber}}</td>
+                <td>{{s.shortListLocation}}</td>
+                <td>{{s.shortListRoleTitle}}</td>
+                <td>{{s.shortListSkillTitle}}</td>
+            </tr>
+        </tbody>
+
+    </table>
 </div>

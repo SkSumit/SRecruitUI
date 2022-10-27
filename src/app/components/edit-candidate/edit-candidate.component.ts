@@ -26,12 +26,12 @@ export class EditCandidateComponent implements OnInit {
       .subscribe((res : any)=>(this.candidate = res));
   }
 
-  updateCandidate(candidate:Candidate){
-    this.candidateService
-      .updateCandidate(candidate)
-      .subscribe((candidates:Candidate[])=>this.candidateUpdated.emit(candidates))
-      console.log(this.candidates.length);
-  }
+  // updateCandidate(candidate:Candidate){
+  //   this.candidateService
+  //     .updateCandidate(candidate)
+  //     .subscribe((candidates:Candidate[])=>this.candidateUpdated.emit(candidates))
+  //     console.log(this.candidates.length);
+  // }
     
 
   deleteCandidate(candidate:Candidate){
@@ -46,6 +46,37 @@ export class EditCandidateComponent implements OnInit {
       .createCandidate(candidate.value)
       .subscribe((candidates:Candidate[])=>this.candidateUpdated.emit(candidates))
       candidate.resetForm();
+  }
+
+  addCandidate = (form:any)=>{
+    const {value} = form;
+    console.log(this.candidateToEdit);
+    console.log(form.value);
+    if(this.candidateToEdit){
+      const res = (value.address == undefined) ? this.candidateToEdit.address:value.address;
+      console.log(this.candidateToEdit.address);
+      console.log(value.address);
+      this.candidateService
+      .updateCandidate({
+        candidateId:this.candidateToEdit.candidateId,
+        fullName:value.fullName == undefined ? this.candidateToEdit.fullName:value.fullName,
+        phoneNumber:value.phoneNumber == undefined ? this.candidateToEdit.phoneNumber:value.phoneNumber,
+        emailId:value.emailId == undefined ? this.candidateToEdit.emailId:value.emailId,
+        address:res,
+        preferredLocation:value.preferredLocation == undefined ? this.candidateToEdit.preferredLocation:value.preferredLocation,
+        jobSkillTitle:value.jobSkillTitle == undefined ? this.candidateToEdit.jobSkillTitle:value.jobSkillTitle,
+        yearOfExperience:value.yearOfExperience == undefined ? this.candidateToEdit.yearOfExperience:value.yearOfExperience
+      })
+      .subscribe((r)=>{
+        this.candidate.find(
+          (candidate:Candidate)=>candidate.candidateId === r.candidateId
+        )
+        this.candidate = this.candidate;
+        console.log(this.candidate);
+      });
+    }else{
+      this.createCandidate(form);
+    }
   }
 
  
