@@ -2,6 +2,8 @@ import { formatCurrency } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Company } from 'src/app/models/company';
 import { CompanyService } from 'src/app/services/company.service';
+import { SelectedCandidateService } from 'src/app/services/selected-candidate.service';
+
 
 @Component({
   selector: 'app-edit-company',
@@ -9,6 +11,9 @@ import { CompanyService } from 'src/app/services/company.service';
   styleUrls: ['./edit-company.component.css']
 })
 export class EditCompanyComponent implements OnInit {
+
+  selectedCandidate:any = [];
+
   company:any = [];
   companies: Company[] = [];
   companyToEdit?:Company;
@@ -16,6 +21,7 @@ export class EditCompanyComponent implements OnInit {
 
   constructor(
     private companyService:CompanyService,
+    private selectedCandidateService:SelectedCandidateService
     ) { }
 
   ngOnInit(): void {
@@ -69,5 +75,10 @@ export class EditCompanyComponent implements OnInit {
 
   editCompany(company:Company){
     this.companyToEdit = company;
+  }
+  getSelectedCandidate(companyId:number){
+    this.selectedCandidateService
+      .getSelectedCandidate(companyId)
+      .subscribe((res : any)=>(this.selectedCandidate = res));
   }
 }

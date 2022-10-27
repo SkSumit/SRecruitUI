@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditCandidateComponent } from './components/edit-candidate/edit-candidate.component';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
+import { SelectedCandidatesComponent } from './components/selected-candidates/selected-candidates.component';
 import { RolesComponent } from './roles/roles.component';
 import { SkillsComponent } from './skills/skills.component';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'candidates', component: EditCandidateComponent },
   { path: 'companies', component: EditCompanyComponent },
   { path: 'roles', component: RolesComponent },
+  { path: 'selectedCandidates',component:SelectedCandidatesComponent}
 ];
 
 @NgModule({

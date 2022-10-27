@@ -9,6 +9,7 @@
                 <th>Company Location</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>Selected Candidate</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,9 @@
                 </td>
                 <td>
                     <button (click) = "deleteCompany(c)">Delete</button>
+                </td>
+                <td>
+                    <button (click) = "getSelectedCandidate(c.companyId)">SelectedCandidate</button>
                 </td>
             </tr>
         </tbody>
@@ -49,4 +53,31 @@
       <button type = "submit" class="button is-success ml-3">Add Company</button>
       </form>
 
+</div>
+
+<p class = "has-text-left subtitle is-3">Shortlisted Candidates</p>
+<div>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Location</th>
+                <th>Role Title</th>
+                <th>Skill Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let s of selectedCandidate">
+                <td>{{s.shortListId}}</td>
+                <td>{{s.shortListName}}</td>
+                <td>{{s.shortListNumber}}</td>
+                <td>{{s.shortListLocation}}</td>
+                <td>{{s.shortListRoleTitle}}</td>
+                <td>{{s.shortListSkillTitle}}</td>
+            </tr>
+        </tbody>
+
+    </table>
 </div>
