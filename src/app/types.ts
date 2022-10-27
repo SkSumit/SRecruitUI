@@ -9,3 +9,13 @@ export type Role = {
 };
 
 export type Roles = Role[];
+
+export type Post = {
+  id: number;
+  job_posting_id: number;
+  company_name: string;
+  location: string;
+  job_posting_yoe: number;
+  job_role_title: string;
+  job_skills_title: string;
+};

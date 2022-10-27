@@ -1,0 +1,65 @@
+<div class="skills-container">
+  <p class="has-text-left subtitle is-3">Roles</p>
+  <div class="columns">
+    <div class="column is-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Job Posting Id</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Role Title</th>
+            <th>Role Skills</th>
+            <th>Year of Exp</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td>{{ post.job_posting_id }}</td>
+            <td>{{ post.company_name }}</td>
+            <td>{{ post.location }}</td>
+            <td>{{ post.job_role_title }}</td>
+            <td>{{ post.job_skills_title }}</td>
+            <td>{{ post.job_posting_yoe }}</td>
+            <td>
+              <button
+                (click)="getShorlistedCandidates(post.job_posting_id)"
+                class="button is-primary is-small"
+              >
+                View Candidates
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <table *ngIf="shortListedCandidates" class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>FullName</th>
+        <th>PhoneNumber</th>
+        <th>EmailId</th>
+        <th>Address</th>
+        <th>PreferredLocation</th>
+        <th>JobSkillTitle</th>
+        <th>YearOfExperience</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of shortListedCandidates">
+        <td>{{ c.candidateId }}</td>
+        <td>{{ c.fullName }}</td>
+        <td>{{ c.phoneNumber }}</td>
+        <td>{{ c.emailId }}</td>
+        <td>{{ c.address }}</td>
+        <td>{{ c.preferredLocation }}</td>
+        <td>{{ c.jobSkillTitle }}</td>
+        <td>{{ c.yearOfExperience }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { EditCompanyComponent } from './components/edit-company/edit-company.component';
 import { EditCandidateComponent } from './components/edit-candidate/edit-candidate.component';
 import { RolesComponent } from './roles/roles.component';
+import { JobpostingComponent } from './jobposting/jobposting.component';
 
 
 
@@ -33,6 +34,7 @@ import { RolesComponent } from './roles/roles.component';
     EditCompanyComponent,
     EditCandidateComponent,
     RolesComponent,
+    JobpostingComponent,
   ],
   imports: [
     BrowserModule,
