@@ -1,5 +1,5 @@
 <div class="company_container">
-    <p class = "has-text-left subtitle is-3">Company</p>
+  <p class="has-text-left subtitle is-3">Company</p>
 
     <table class = "table">
         <thead>
@@ -40,19 +40,20 @@
       class= "input"
       type="text"
       placeholder="Name"
-      name="companyName" [(ngModel)] = "company.companyName"
-      [value] = "companyToEdit?.companyName"
-      />
-      <input
+      name="companyName"
+      [(ngModel)]="company.companyName"
+      [value]="companyToEdit?.companyName"
+    />
+    <input
       class="input"
       type="text"
       placeholder="Location"
-      name="location" [(ngModel)] = "company.location"
-      [value] = "companyToEdit?.location"
-      />
-      <button type = "submit" class="button is-success ml-3">Add Company</button>
-      </form>
-
+      name="location"
+      [(ngModel)]="company.location"
+      [value]="companyToEdit?.location"
+    />
+    <button type="submit" class="button is-success ml-3">Add Company</button>
+  </form>
 </div>
 
 <p class = "has-text-left subtitle is-3">Shortlisted Candidates</p>

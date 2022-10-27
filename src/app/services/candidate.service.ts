@@ -26,7 +26,7 @@ export class CandidateService {
       candidate
     );
   }
-  public deleteCandidate(c:Candidate): Observable<Candidate[]> {
+  public deleteCandidate(c: Candidate): Observable<Candidate[]> {
     return this.http.delete<Candidate[]>(
       `${environment.apiURL}${this.url}/${c.candidateId}`
     );
